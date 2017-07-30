@@ -46,7 +46,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DependencyUpdater.nuspec" />
+    <None Include="DependencyUpdater.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
@@ -61,6 +63,7 @@
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
       <Output TaskParameter="Assemblies" ItemName="assemblyInfo" />
     </GetAssemblyIdentity>
-    <Exec Command="@(NuGetCommandLine->'%(FullPath)') pack $(TargetName).nuspec -Version $([System.Version]::Parse(%(assemblyInfo.Version)).ToString(3)) -Properties Configuration=Release -OutputDirectory $(OutDir) -BasePath $(OutDir)" />
+    <Exec Command="@(NuGetCommandLine->'%(FullPath)') pack $(TargetName).nuspec -Version $([System.Version]::Parse(%(assemblyInfo.Version)).ToString(3)) -Properties Configuration=$(Configuration) -OutputDirectory $(OutDir) -BasePath $(OutDir)" />
+    <Exec Condition=" '$(Configuration)' == 'Release' " Command="@(NuGetCommandLine->'%(FullPath)') push $(ProjectDir)$(OutDir)$(TargetName).$([System.Version]::Parse(%(assemblyInfo.Version)).ToString(3)).nupkg -Source https://www.nuget.org/api/v2/package" />
   </Target>
 </Project>
