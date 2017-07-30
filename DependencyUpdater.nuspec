@@ -4,8 +4,9 @@
     <id>DependencyUpdater</id>
     <version>0.0.0</version>
     <authors>Poma</authors>
+    <title>NuGet Dependency Updater</title>
     <description>Updates dependency versions in .nuspec file from packages.config file</description>
-    <dependencies />
+    <projectUrl>https://github.com/poma/DependencyUpdater</projectUrl>   
   </metadata>
   <files>
     <file src="DependencyUpdater.exe" target="tools/" />
