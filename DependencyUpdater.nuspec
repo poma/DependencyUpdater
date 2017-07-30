@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DependencyUpdater</id>
+    <version>0.0.0</version>
+    <authors>Poma</authors>
+    <description>Updates dependency versions in .nuspec file from packages.config file</description>
+    <dependencies />
+  </metadata>
+  <files>
+    <file src="DependencyUpdater.exe" target="tools/" />
+    <!--file src="README.md" target="readme.txt" /-->
+  </files>
+</package>
